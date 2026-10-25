@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AZHARIX | College Management System</title>
+<style>
+:root{--navy:#07316c;--blue:#0755c9;--pale:#f2f7fd;--gold:#ffc857;--ink:#132f55;--muted:#657994;--line:#e0e9f5;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--pale)}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:11px 16px;font-weight:700}
+.primary{background:var(--blue);color:#fff}.outline{background:white;border:1px solid var(--line);color:var(--navy)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--navy);letter-spacing:.3px}.logo{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--navy);color:var(--gold);font-size:25px}.brand small{display:block;font-size:10px;color:var(--blue);font-weight:600;letter-spacing:0}
+header{height:74px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,56px);gap:16px}
+nav{display:flex;align-items:center;gap:20px}nav a{font-size:13px;color:var(--muted);text-decoration:none;cursor:pointer}
+main{max-width:1250px;margin:auto;padding:28px 18px}.hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:28px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:clamp(24px,5vw,60px);box-shadow:0 10px 30px #163d6d0c}
+.kicker{color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:11px}
+h1{font-size:clamp(34px,5vw,60px);line-height:1.03;margin:12px 0;color:var(--navy);letter-spacing:-1.5px}h1 span{color:var(--blue)}p{color:var(--muted);line-height:1.7}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.campus{min-height:300px;border-radius:22px;background:linear-gradient(145deg,#8fc6ff,#eaf5ff 55%,#f9d88a);display:flex;align-items:center;justify-content:center;padding:22px;position:relative;overflow:hidden}
+.building{width:100%;height:255px;border-radius:16px;background:linear-gradient(90deg,#f4f7fb,#cbdcf0);border:8px solid #fff;box-shadow:0 12px 30px #123b6c25;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
+.building:before{content:"";position:absolute;left:0;right:0;top:0;height:22px;background:var(--navy)}.building .school{font-size:62px}.building strong{font-size:22px;color:var(--navy)}.building small{color:var(--blue)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.stat strong{font-size:25px;color:var(--blue);display:block}.stat span{font-size:12px;color:var(--muted)}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}.feature{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}.feature b{display:block;margin:9px 0}.feature .ico{font-size:25px}
+.view{display:none}.view.active{display:block}.authwrap{max-width:530px;margin:12px auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 12px 35px #153e6d10}.authwrap .brand{justify-content:center;margin-bottom:20px}.authwrap h2{text-align:center;color:var(--navy);margin:6px 0}.sub{text-align:center;font-size:13px;margin:8px 0 22px}.roles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}.role{border:1px solid var(--line);border-radius:12px;background:white;padding:13px 4px;text-align:center;color:var(--muted);font-size:12px}.role.selected{border-color:var(--blue);background:#eaf2ff;color:var(--blue);font-weight:800}
+label{display:block;font-size:12px;font-weight:700;margin:13px 0 6px}input,select{width:100%;padding:12px;border:1px solid #d7e2f0;border-radius:9px;outline:none;background:#fff}input:focus,select:focus{border-color:var(--blue)}.full{width:100%;margin-top:17px}.stepnote{background:#eff6ff;border-radius:10px;padding:12px;font-size:12px;color:var(--navy);margin:12px 0}.small{text-align:center;font-size:12px}.small a{color:var(--blue);cursor:pointer}.dash{display:grid;grid-template-columns:205px 1fr;min-height:620px;background:white;border:1px solid var(--line);border-radius:18px;overflow:hidden}.sidebar{background:var(--navy);color:white;padding:18px 12px}.sidebar .brand{color:white;margin:0 0 25px 8px}.sidebar .brand small{color:#c7dcff}.sidebtn{display:block;width:100%;text-align:left;margin:5px 0;background:transparent;color:#e6f0ff;padding:12px;font-size:13px}.sidebtn.active,.sidebtn:hover{background:var(--blue)}.dashmain{padding:24px;min-width:0}.dashhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.dashhead h2{margin:0;color:var(--navy)}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}.metric{border:1px solid var(--line);border-radius:13px;padding:15px}.metric small{color:var(--muted)}.metric strong{display:block;font-size:23px;color:var(--blue);margin:7px 0}.panel{border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:15px}.panel h3{margin:0 0 12px}.rowline{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:12px 0;font-size:13px}.notice{background:#f7faff;border-radius:10px;padding:12px;margin:8px 0;font-size:13px}.notice small{display:block;color:var(--muted);margin-top:4px}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
+@media(max-width:850px){nav{gap:10px}nav a:nth-child(2),nav a:nth-child(3){display:none}.hero{grid-template-columns:1fr}.campus{min-height:230px}.features{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.dash{grid-template-columns:75px 1fr}.sidebar{padding:12px 5px}.sidebar .brand div:last-child,.sidebtn span{display:none}.sidebar .brand{margin-left:10px}.sidebtn{text-align:center;font-size:19px;padding:12px 3px}.dashmain{padding:14px}}
+@media(max-width:500px){header{padding:0 12px}.brand{font-size:14px}header nav a{display:none}.hero{padding:24px}.stats{gap:6px}.stat{padding:10px}.stat strong{font-size:20px}.roles{grid-template-columns:repeat(2,1fr)}.dash{grid-template-columns:58px 1fr}.cards{gap:7px}.metric{padding:10px}.metric strong{font-size:19px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">🎓</div><div>AZHARIX<small>College Management System</small></div></div>
+  <nav><a onclick="showView('home')">Home</a><a onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Features</a><a onclick="showView('login')">Login</a><button class="primary" onclick="showView('signup')">Sign Up</button></nav>
+</header>
+<main>
+<section id="home" class="view active">
+  <div class="hero">
+    <div><div class="kicker">Smart Education • Better Future</div><h1>Your Education<br><span>Our Priority</span></h1>
+      <p>AZHARIX College Management System helps organize student profiles, attendance, fees, results and college notices in one simple portal.</p>
+      <div class="actions"><button class="primary" onclick="showView('signup')">Get Started</button><button class="outline" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Learn More</button></div>
+      <div class="stats"><div class="stat"><strong>10+</strong><span>Years of Excellence</span></div><div class="stat"><strong>5000+</strong><span>Happy Students</span></div><div class="stat"><strong>100+</strong><span>Expert Faculty</span></div></div>
+    </div>
+    <div class="campus"><div class="building"><div class="school">🏫</div><strong>AZHARIX COLLEGE</strong><small>Smart Education • Better Future</small><p style="margin:8px 12px">Learn • Grow • Succeed</p></div></div>
+  </div>
+  <div style="text-align:center;margin:22px 0 4px;color:#07316c;font-size:12px;font-weight:800;letter-spacing:.8px">Powered by AZHAR</div>
+  <div id="features" class="features">
+    <div class="feature"><div class="ico">🎓</div><b>Student Dashboard</b><p>Student profile, academic overview and quick access to college services.</p></div>
+    <div class="feature"><div class="ico">📅</div><b>Attendance Tracking</b><p>Attendance summaries and monthly records.</p></div>
+    <div class="feature"><div class="ico">💳</div><b>Fees Management</b><p>Fee totals, paid status and outstanding balances.</p></div>
+    <div class="feature"><div class="ico">📊</div><b>Results & Reports</b><p>Monthly results, subjects, marks and grades.</p></div>
+    <div class="feature"><div class="ico">📢</div><b>Notice Board</b><p>Exam schedules, events and college announcements.</p></div>
+    <div class="feature"><div class="ico">🛡️</div><b>Role-based Access</b><p>Separate views for students, teachers, parents and administrators.</p></div>
+  </div>
+</section>
+
+<section id="login" class="view">
+ <div class="authwrap"><div class="brand"><div class="logo">🎓</div><div>AZHARIX<small>College Management System</small></div></div>
+ <h2>Welcome Back</h2><p class="sub">Sign in to your college portal</p>
+ <label>Email or College ID</label><input id="loginId" placeholder="Enter email or college ID">
+ <label>Password</label><input id="loginPassword" type="password" placeholder="Enter password">
+ <button class="primary full" onclick="demoLogin()">Login to Preview</button>
+ <p class="small">New here? <a onclick="showView('signup')">Create an account</a></p>
+ <div class="stepnote">Demo preview only: this login does not authenticate a real account or connect to a database.</div></div>
+</section>
+
+<section id="signup" class="view">
+ <div class="authwrap"><div class="brand"><div class="logo">🎓</div><div>AZHARIX<small>College Management System</small></div></div>
+ <h2 id="signupTitle">Create Account</h2><p class="sub" id="signupSub">Choose your role and start registration</p>
+ <div class="roles">
+  <button class="role selected" data-role="Student" onclick="pickRole(this)">🎓<br>Student</button>
+  <button class="role" data-role="Teacher" onclick="pickRole(this)">👨‍🏫<br>Teacher</button>
+  <button class="role" data-role="Parent" onclick="pickRole(this)">👪<br>Parent</button>
+  <button class="role" data-role="Admin" onclick="pickRole(this)">🛡️<br>Admin</button>
+ </div>
+ <div id="step1">
+  <label>Full Name</label><input id="fullName" placeholder="Enter your full name">
+  <label>Gmail Address</label><input id="email" type="email" placeholder="you@gmail.com">
+  <button class="primary full" onclick="nextStep()">Next: Email Verification</button>
+ </div>
+ <div id="step2" style="display:none">
+  <div class="stepnote">A real system sends a six-digit code to your email. This preview only demonstrates the screen; it does not send an email or generate a real OTP.</div>
+  <label>6-digit Verification Code</label><input id="otp" inputmode="numeric" maxlength="6" placeholder="Enter demo code 123456">
+  <button class="primary full" onclick="verifyDemo()">Verify Code</button><button class="outline full" onclick="goStep(1)">Back</button>
+ </div>
+ <div id="step3" style="display:none">
+  <label id="collegeIdLabel">Student / College ID</label><input id="collegeId" placeholder="Enter college-issued ID">
+  <label>Profile Photo (optional in this preview)</label><input id="photo" type="file" accept="image/*">
+  <label>Password (minimum 8 characters)</label><input id="password" type="password" placeholder="Create password">
+  <label>Confirm Password</label><input id="confirmPassword" type="password" placeholder="Confirm password">
+  <button class="primary full" onclick="finishDemo()">Create Demo Account</button><button class="outline full" onclick="goStep(2)">Back</button>
+ </div>
+ <p class="small">Already have an account? <a onclick="showView('login')">Login</a></p>
+ <div id="signupMsg" class="stepnote">Preview mode — account data is not saved to a server.</div>
+ </div>
+</section>
+
+<section id="dashboard" class="view">
+ <div class="dash">
+  <aside class="sidebar"><div class="brand"><div class="logo">🎓</div><div>AZH<small>Student Portal</small></div></div>
+   <button class="sidebtn active" onclick="dashboardTab('Dashboard',this)">▦ <span>Dashboard</span></button>
+   <button class="sidebtn" onclick="dashboardTab('My Profile',this)">👤 <span>My Profile</span></button>
+   <button class="sidebtn" onclick="dashboardTab('Results',this)">▤ <span>Results</span></button>
+   <button class="sidebtn" onclick="dashboardTab('Attendance',this)">📅 <span>Attendance</span></button>
+   <button class="sidebtn" onclick="dashboardTab('Fees',this)">💳 <span>Fees</span></button>
+   <button class="sidebtn" onclick="dashboardTab('Time Table',this)">🗓 <span>Time Table</span></button>
+   <button class="sidebtn" onclick="dashboardTab('Notices',this)">📢 <span>Notices</span></button>
+   <button class="sidebtn" onclick="showView('home')">↩ <span>Logout / Home</span></button>
+  </aside>
+  <div class="dashmain"><div class="dashhead"><div><h2 id="dashTitle">Welcome Back, Student!</h2><small style="color:var(--muted)">Keep going! Your future is bright.</small></div><button class="outline" onclick="showView('home')">Home</button></div>
+   <div id="dashContent"><div class="cards"><div class="metric">🟢<small>Attendance</small><strong>92%</strong><small>Demo data</small></div><div class="metric">💳<small>Fees Status</small><strong>Paid</strong><small>Sample only</small></div><div class="metric">📊<small>Total Marks</small><strong>876/1100</strong><small>Demo result</small></div><div class="metric">🏆<small>Class Rank</small><strong>5</strong><small>Sample rank</small></div></div>
+   <div class="panel"><h3>Recent Notices</h3><div class="notice">📘 Annual Sports Day <small>Event information — sample notice</small></div><div class="notice">📝 Mid Term Exam Schedule <small>Check your timetable — sample notice</small></div><div class="notice">💳 Fee Payment Reminder <small>Demo notice only</small></div></div></div>
+  </div>
+ </div>
+ <div class="stepnote">یہ dashboard پری ویو ہے؛ اس کے نمبر، فیس اور رزلٹ نمونہ ہیں، کالج کا حقیقی ریکارڈ نہیں۔</div>
+</section>
+</main>
+<footer><strong style="display:block;color:#07316c;margin-bottom:6px">Powered by AZHAR</strong>© 2026 AZHARIX College Management System • Interactive local preview</footer>
+<script>
+let currentRole="Student";
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function pickRole(el){document.querySelectorAll('.role').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');currentRole=el.dataset.role;document.getElementById('collegeIdLabel').textContent=currentRole==='Teacher'?'Teacher / Staff ID':currentRole==='Parent'?'Parent ID / Link Code':currentRole==='Admin'?'Administrator ID':'Student / College ID';}
+function goStep(n){[1,2,3].forEach(i=>document.getElementById('step'+i).style.display=i===n?'block':'none');}
+function nextStep(){let name=document.getElementById('fullName').value.trim(),email=document.getElementById('email').value.trim();if(!name||!email||!email.includes('@')){alert('Please enter your name and a valid email address.');return}document.getElementById('signupMsg').textContent='Demo only: no email was sent. Use 123456 to preview the next step.';goStep(2)}
+function verifyDemo(){if(document.getElementById('otp').value.trim()!=='123456'){alert('For this design preview only, enter 123456. This is not a real OTP.');return}goStep(3)}
+function finishDemo(){let id=document.getElementById('collegeId').value.trim(),p=document.getElementById('password').value,c=document.getElementById('confirmPassword').value;if(!id||p.length<8||p!==c){alert('Enter a college ID, use at least 8 password characters, and confirm the password.');return}document.getElementById('dashTitle').textContent='Welcome Back, '+document.getElementById('fullName').value.trim()+'!';document.getElementById('signupMsg').textContent='Preview account created in this page only; it is not saved to a server.';showView('dashboard')}
+function demoLogin(){if(!document.getElementById('loginId').value||!document.getElementById('loginPassword').value){alert('Enter any demo ID/email and password to view the dashboard.');return}document.getElementById('dashTitle').textContent='Welcome Back!';showView('dashboard')}
+function dashboardTab(name,el){document.querySelectorAll('.sidebtn').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('dashTitle').textContent=name;let content=document.getElementById('dashContent');let data={
+'My Profile':'<div class="panel"><h3>Student Profile</h3><div class="rowline"><span>Name</span><b>Preview Student</b></div><div class="rowline"><span>College ID</span><b>AZ-2026-001</b></div><div class="rowline"><span>Class</span><b>IPB-2 (sample)</b></div><div class="rowline"><span>Email</span><b>student@example.com</b></div></div>',
+'Results':'<div class="panel"><h3>Monthly Results — Sample</h3>'+[['Mathematics','92/100'],['Physics','88/100'],['Chemistry','85/100'],['English','90/100']].map(x=>'<div class="rowline"><span>'+x[0]+'</span><b>'+x[1]+'</b></div>').join('')+'</div>',
+'Attendance':'<div class="panel"><h3>Attendance Summary — Sample</h3><div class="rowline"><span>Present</span><b>22 days</b></div><div class="rowline"><span>Absent</span><b>2 days</b></div><div class="rowline"><span>Attendance</span><b>92%</b></div></div>',
+'Fees':'<div class="panel"><h3>Fee Management — Sample</h3><div class="rowline"><span>Total fee</span><b>PKR 5,000</b></div><div class="rowline"><span>Paid</span><b>PKR 2,000</b></div><div class="rowline"><span>Remaining</span><b>PKR 3,000</b></div></div>',
+'Time Table':'<div class="panel"><h3>Weekly Timetable — Sample</h3>'+['08:00 Mathematics','09:00 Physics','10:15 Chemistry','11:15 English','12:15 Computer Science'].map(x=>'<div class="rowline"><span>'+x+'</span><b>Classroom</b></div>').join('')+'</div>',
+'Notices':'<div class="panel"><h3>College Notices — Sample</h3><div class="notice">Exam Schedule<small>Sample notice</small></div><div class="notice">Annual Sports Day<small>Sample notice</small></div></div>'};
+content.innerHTML=data[name]||content.innerHTML}
+</script>
+</body>
+</html>
